@@ -1,20 +1,15 @@
 <template>
-  <div @click="handleLogin">
+  <div @click="handleLogin" :style="props.buttonStyles">
     <slot>
-      <div class="google-login-button">
-        <img
-          src="../assets/google-logo.png"
-          alt="Google Logo"
-          class="google-icon"
-        />
-        <span>Sign in with Google</span>
-      </div>
+      <img :src="googleLogo" alt="Google Logo" :style="props.logoStyles" />
+      <span>Sign in with Google</span>
     </slot>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
+import googleLogo from "../assets/google-logo.png";
 
 const props = defineProps({
   clientId: {
@@ -28,6 +23,25 @@ const props = defineProps({
   onError: {
     type: Function,
     default: () => {},
+  },
+  buttonStyles: {
+    type: Object,
+    default: () => ({
+      cursor: "pointer",
+      display: "inline-flex",
+      alignItems: "center",
+      padding: "10px 20px",
+      borderRadius: "5px",
+      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+    }),
+  },
+  logoStyles: {
+    type: Object,
+    default: () => ({
+      width: "20px",
+      height: "20px",
+      marginRight: "10px",
+    }),
   },
 });
 
@@ -60,33 +74,5 @@ onMounted(() => {
   script.async = true;
   script.defer = true;
   document.head.appendChild(script);
-
-  script.onload = () => {
-    // google library loaded
-  };
 });
 </script>
-
-<style scoped>
-.google-login-button {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 20px;
-  cursor: pointer;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.google-login-button:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.google-icon {
-  margin-right: 10px;
-}
-
-.google-login-button span {
-  font-weight: 500;
-}
-</style>

@@ -15,6 +15,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "vite",
     "build": "vite build"
   },
   "peerDependencies": {
