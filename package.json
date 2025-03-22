@@ -1,0 +1,45 @@
+{
+  "name": "vue3-google-login",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A lightweight and customizable Vue 3 component for Google OAuth 2.0 code-based authentication.",
+  "main": "dist/vue3-google-login.umd.js",
+  "module": "dist/vue3-google-login.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-google-login.es.js",
+      "require": "./dist/vue3-google-login.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.2.0"
+  },
+  "keywords": [
+    "vue3",
+    "google",
+    "login",
+    "oauth2",
+    "authentication",
+    "component"
+  ],
+  "author": "Shiv Baran Singh <spyshiv@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spyshiv/vue3-google-login.git"
+  },
+  "bugs": {
+    "url": "https://github.com/spyshiv/vue3-google-login/issues"
+  },
+  "homepage": "https://github.com/spyshiv/vue3-google-login#readme"
+}
