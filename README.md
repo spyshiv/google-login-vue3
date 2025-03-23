@@ -5,7 +5,7 @@ A lightweight and customizable Vue 3 component for Google OAuth 2.0 code-based a
 ## Installation
 
 ```
-npm install vue3-google-login
+npm install google-login-vue3
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ npm install vue3-google-login
     </template>
 
     <script setup>
-    import GoogleLogin from 'vue3-google-login';
+    import GoogleLogin from 'google-login-vue3';
 
     const handleSuccess = (response) => {
         const { code } = response;

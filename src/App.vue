@@ -1,7 +1,7 @@
 <template>
   <div class="google-login-container">
     <GoogleLogin
-      clientId="YOUR_GOOGLE_CLIENT_ID"
+      clientId="ADD_YOUR_GOOGLE_CLIENT_ID"
       @success="handleSuccess"
       @error="handleError"
     />
