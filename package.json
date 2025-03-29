@@ -26,12 +26,19 @@
     "vite": "^6.2.0"
   },
   "keywords": [
+    "google-login-vue3",
     "vue3",
-    "google",
-    "login",
-    "oauth2",
+    "google-oauth2",
+    "code-grant",
     "authentication",
-    "component"
+    "login",
+    "oauth",
+    "google-signin",
+    "authorization",
+    "frontend-auth",
+    "vue-component",
+    "security",
+    "javascript"
   ],
   "author": "Shiv Baran Singh <spyshiv@gmail.com>",
   "license": "MIT",
