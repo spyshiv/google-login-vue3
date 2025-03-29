@@ -44,7 +44,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/spyshiv/google-login-vue3.git"
+    "url": "git+https://github.com/spyshiv/google-login-vue3.git"
   },
   "bugs": {
     "url": "https://github.com/spyshiv/google-login-vue3/issues"
