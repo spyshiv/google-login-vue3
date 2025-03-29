@@ -36,6 +36,7 @@ jobs:
         with:
           name: build-artifacts
           path: dist
-      - run: npm publish
+      - name: Publish to npm
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
