@@ -9,13 +9,16 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
 import GoogleLogin from "./components/GoogleLogin.vue";
 
 const handleSuccess = (response) => {
-  const { code } = response;
-  console.log("code:", code);
-  // send 'code' to backend for verification
+  console.log("Google login Success:", response);
+  const { credential } = response;
+  console.log("credential:", credential); // send 'credential' to backend for verification
+  /* for mode 'code'
+    const { code } = response;
+    console.log("code:", code); // send 'code' to backend for verification
+  */
 };
 
 const handleError = (error) => {
@@ -28,6 +31,6 @@ const handleError = (error) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Make it full height for centering */
+  height: 100vh;
 }
 </style>
