@@ -2,7 +2,6 @@
   <div class="google-login-container">
     <GoogleLogin
       clientId="ADD_YOUR_GOOGLE_CLIENT_ID"
-      mode="code"
       @success="handleSuccess"
       @error="handleError"
     />
