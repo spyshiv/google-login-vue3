@@ -1,6 +1,8 @@
 # Vue 3 Google Login Component
 
-A lightweight and customizable Vue 3 component for Google OAuth 2.0 authentication, supporting both code-based and JWT-based authentication modes.
+![Login Demo](https://github.com/spyshiv/google-login-vue3/blob/18073aa38600f5f759933be28f8ead3be0916c4e/src/assets/google-login.gif)
+
+A lightweight and customizable Vue 3 component for Google OAuth 2.0 authentication supports code-based and JWT-based authentication modes.
 
 ## Installation
 
@@ -12,7 +14,7 @@ npm install google-login-vue3
 
 **Import the component:**
 
-```
+```vue
 <template>
     <GoogleLogin
         :clientId="YOUR_GOOGLE_CLIENT_ID"
@@ -71,7 +73,7 @@ Replace `YOUR_GOOGLE_CLIENT_ID` with your actual Google Client ID.
 
 - Used in traditional OAuth 2.0 authentication.
 
-- Requires a backend implementation to securely manage tokens.
+- Requires a backend implementation to manage tokens securely.
 
 ### Handle the success and error events:
 
