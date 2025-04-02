@@ -1,8 +1,8 @@
 {
   "name": "google-login-vue3",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
-  "description": "A lightweight and customizable Vue 3 component for Google OAuth 2.0 code-based authentication.",
+  "description": "A lightweight and customizable Vue 3 component for Google OAuth 2.0 authentication, supporting both code-based and JWT-based authentication modes.",
   "main": "dist/google-login-vue3.umd.js",
   "module": "dist/google-login-vue3.es.js",
   "exports": {
