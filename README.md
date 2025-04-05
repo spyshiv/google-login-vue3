@@ -1,6 +1,6 @@
 # Vue 3 Google Login Component
 
-![Login Demo](https://github.com/spyshiv/google-login-vue3/blob/18073aa38600f5f759933be28f8ead3be0916c4e/src/assets/google-login.gif)
+![Login Demo](https://raw.githubusercontent.com/spyshiv/google-login-vue3/18073aa38600f5f759933be28f8ead3be0916c4e/src/assets/google-login.gif)
 
 A lightweight and customizable **Vue 3 component** for Google OAuth 2.0 authentication supporting both **JWT-based** and **Authorization Code-based** flows.
 
@@ -32,21 +32,21 @@ npm install google-login-vue3
 </template>
 
 <script setup>
-import GoogleLogin from 'google-login-vue3';
+import GoogleLogin from "google-login-vue3";
 
 const handleSuccess = (response) => {
-  console.log('Success response:', response);
+  console.log("Success response:", response);
   if (response.credential) {
-    console.log('JWT Token:', response.credential);
+    console.log("JWT Token:", response.credential);
     // Send the token to your backend for verification
   } else if (response.code) {
-    console.log('Authorization Code:', response.code);
+    console.log("Authorization Code:", response.code);
     // Send the code to your backend for access token exchange
   }
 };
 
 const handleError = (error) => {
-  console.error('Google login error:', error);
+  console.error("Google login error:", error);
 };
 </script>
 ```
@@ -78,11 +78,11 @@ const handleError = (error) => {
 
 ## ⚙️ Props
 
-| Prop          | Type     | Default  | Description                                                                 |
-|---------------|----------|----------|-----------------------------------------------------------------------------|
-| `clientId`    | String   | —        | **Required.** Your Google OAuth 2.0 client ID.                              |
-| `mode`        | String   | `"JWT"`  | `"JWT"` or `"code"` depending on the flow you want to use.                 |
-| `oneTapLogin` | Boolean  | `true`   | Enables Google One Tap login (only valid in JWT mode).                      |
+| Prop          | Type    | Default | Description                                                |
+| ------------- | ------- | ------- | ---------------------------------------------------------- |
+| `clientId`    | String  | —       | **Required.** Your Google OAuth 2.0 client ID.             |
+| `mode`        | String  | `"JWT"` | `"JWT"` or `"code"` depending on the flow you want to use. |
+| `oneTapLogin` | Boolean | `true`  | Enables Google One Tap login (only valid in JWT mode).     |
 
 ---
 
@@ -124,6 +124,7 @@ Example:
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
+
 - Open issues for bugs or feature requests.
 - Submit PRs to improve the codebase or docs.
 
