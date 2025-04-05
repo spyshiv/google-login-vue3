@@ -2,127 +2,141 @@
 
 ![Login Demo](https://github.com/spyshiv/google-login-vue3/blob/18073aa38600f5f759933be28f8ead3be0916c4e/src/assets/google-login.gif)
 
-A lightweight and customizable Vue 3 component for Google OAuth 2.0 authentication supports code-based and JWT-based authentication modes.
+A lightweight and customizable **Vue 3 component** for Google OAuth 2.0 authentication supporting both **JWT-based** and **Authorization Code-based** flows.
 
-## Installation
+---
 
-```
+## 🏠 Installation
+
+```bash
 npm install google-login-vue3
 ```
 
-## Usage
+---
 
-**Import the component:**
+## 🚀 Usage
+
+### Import the component:
 
 ```vue
 <template>
-    <GoogleLogin
-        :clientId="YOUR_GOOGLE_CLIENT_ID"
-        mode="JWT"  // Change to "code" for authorization code flow
-        :oneTapLogin="true"  // Only applicable in JWT mode
-        @success="handleSuccess"
-        @error="handleError"
-    />
+  <GoogleLogin
+    :clientId="YOUR_GOOGLE_CLIENT_ID"
+    mode="JWT"
+    :oneTapLogin="true"
+    @success="handleSuccess"
+    @error="handleError"
+  />
+  <!-- Optional: mode="JWT" (default) or "code" -->
+  <!-- Optional: Enables Google One Tap (:oneTapLogin="true") in JWT mode -->
 </template>
 
 <script setup>
 import GoogleLogin from 'google-login-vue3';
 
 const handleSuccess = (response) => {
-    console.log('Success response:', response);
-    if (response.credential) {
-        console.log('JWT Token:', response.credential);
-        // Use the JWT token for authentication
-    } else if (response.code) {
-        console.log('Authorization Code:', response.code);
-        // Send the code to your backend for token exchange
-    }
+  console.log('Success response:', response);
+  if (response.credential) {
+    console.log('JWT Token:', response.credential);
+    // Send the token to your backend for verification
+  } else if (response.code) {
+    console.log('Authorization Code:', response.code);
+    // Send the code to your backend for access token exchange
+  }
 };
 
 const handleError = (error) => {
-    console.error('Google login error:', error);
+  console.error('Google login error:', error);
 };
 </script>
 ```
 
-Replace `YOUR_GOOGLE_CLIENT_ID` with your actual Google Client ID.
+> Replace `YOUR_GOOGLE_CLIENT_ID` with your actual client ID from [Google Developer Console](https://console.cloud.google.com/apis/credentials).
 
-### Reference Doc:
+---
 
-[Get your Google API client ID](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid)
+## 🔐 Authentication Modes
 
-## Authentication Modes
+### 1. **JWT-Based Authentication (ID Token Flow) [Default]**
 
-### 1. **JWT-Based Authentication (ID Token Flow)** (Default Mode)
+- Google returns a **JWT (ID Token)** to the frontend.
+- No backend interaction is required (unless token validation is needed).
+- Ideal for apps using the ID token directly to verify identity.
+- One Tap Login is supported via the `oneTapLogin` prop.
+- Uses the native Google Sign-In button.
 
-- Google directly issues a JWT (ID token) to the front end.
-
-- No backend exchange is needed unless further validation is required.
-
-- Suitable for apps that only need identity verification.
-
-- Uses Google Identity Services (`g_id_signin`).
-
-- Supports **Google One Tap login** (`oneTapLogin` prop).
+---
 
 ### 2. **Code-Based Authentication (Authorization Code Flow)**
 
-- The front end requests an authorization code from Google.
+- Returns an **Authorization Code** to the frontend.
+- You must send this code to your backend to exchange for access/refresh tokens.
+- Best suited for secure OAuth flows requiring backend token handling.
+- Custom UI can be used via the default slot.
 
-- This code must be sent to the backend for exchange with access and refresh tokens.
+---
 
-- Used in traditional OAuth 2.0 authentication.
+## ⚙️ Props
 
-- Requires a backend implementation to manage tokens securely.
+| Prop          | Type     | Default  | Description                                                                 |
+|---------------|----------|----------|-----------------------------------------------------------------------------|
+| `clientId`    | String   | —        | **Required.** Your Google OAuth 2.0 client ID.                              |
+| `mode`        | String   | `"JWT"`  | `"JWT"` or `"code"` depending on the flow you want to use.                 |
+| `oneTapLogin` | Boolean  | `true`   | Enables Google One Tap login (only valid in JWT mode).                      |
 
-### Handle the success and error events:
+---
 
-- The `success` event provides either:
+## 🤩 Customization
 
-  - `{ credential: <JWT Token> }` in JWT mode.
+- In `code` mode, you can customize the login button using the default slot.
 
-  - `{ code: <Authorization Code> }` in code mode.
+Example:
 
-- The `error` event provides information about any login failures.
+```vue
+<GoogleLogin mode="code" :clientId="clientId">
+  <template #default>
+    <button class="my-custom-btn">Sign in with Google</button>
+  </template>
+</GoogleLogin>
+```
 
-## Props
+---
 
-- `clientId` (String, required): Your Google OAuth Client ID.
+## 🔄 Backend Integration (For `mode="code"`)
 
-- `mode` (String, default: "JWT"): Either "JWT" or "code".
+- Use the authorization code to exchange tokens securely from your backend.
+- Recommended libraries:
+  - Node.js: `google-auth-library`
+  - Python: `google-auth`
+- Follow Google's [OAuth 2.0 for Web Server Applications](https://developers.google.com/identity/protocols/oauth2/web-server#exchange-authorization-code) documentation.
 
-- `oneTapLogin` (Boolean, default: `true`): Enables Google One Tap login (applicable in JWT mode only).
+---
 
-## Customization
+## ⚠️ Notes
 
-- The component renders Google’s default Sign-In button in JWT mode.
+- Configure **JavaScript Origins** and **Redirect URIs** in your Google Cloud Console.
+- For One Tap login, ensure the domain is verified.
+- Pop-up blockers can prevent login. Notify users if login fails due to browser settings.
+- Always handle `success` and `error` events properly.
 
-- You can customize the button appearance using the default slot in code mode.
+---
 
-## Backend Integration (For Code-Based Flow)
+## 🤝 Contributing
 
-- If using `mode="code"`, the authorization code must be sent to the backend.
+Contributions are welcome! Feel free to:
+- Open issues for bugs or feature requests.
+- Submit PRs to improve the codebase or docs.
 
-- The backend should exchange the code for access and refresh tokens using Google's OAuth 2.0 API.
+---
 
-- Refer to the Google OAuth 2.0 documentation for detailed backend integration.
+## 📝 License
 
-## Important Notes
+[MIT](LICENSE)
 
-- Ensure that your Google Cloud Console project is configured correctly with allowed JavaScript origins and redirect URIs.
+---
 
-- The user must allow popups for the Google login to work.
+## 👨‍💼 Author
 
-- Implement robust error handling for production use.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues for bug reports or feature requests.
-
-## License
-
-MIT
-
-## Author
-
-Shiv Baran Singh [spyshiv@gmail.com](mailto:spyshiv@gmail.com)
+**Shiv Baran Singh**  
+📧 [spyshiv@gmail.com](mailto:spyshiv@gmail.com)  
+🔗 [GitHub](https://github.com/spyshiv)
