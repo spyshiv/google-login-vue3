@@ -9,7 +9,7 @@ export default defineConfig({
       entry: fileURLToPath(
         new URL("./src/components/GoogleLogin.vue", import.meta.url)
       ),
-      name: "Vue3GoogleLogin", // Exported library name
+      name: "GoogleLoginVue3", // Exported library name
       fileName: (format) => `google-login-vue3.${format}.js`
     },
     rollupOptions: {
