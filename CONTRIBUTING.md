@@ -52,7 +52,7 @@ npm run build
 npm test
 ```
 
-> Make sure your code is clean and linted. You can run `npm run lint` before pushing changes.
+> Make sure your code is clean and linted before pushing changes.
 
 ---
 
@@ -96,7 +96,3 @@ By contributing, you agree that your contributions will be licensed under the [M
 ---
 
 Thanks for helping make `google-login-vue3` better! 💙
-
----
-
-Let me know if you'd like to personalize any part of this—like adding your GitHub link, roadmap, or setting up semantic commit rules.
